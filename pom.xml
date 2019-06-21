@@ -49,6 +49,7 @@
 			<artifactId> jjwt </artifactId>
 			<version> 0.7.0 </version>
 		</dependency>
+		
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
@@ -66,12 +67,15 @@
 	</dependencies>
 
 	<build>
+		<finalName>sigeb-api</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>br.com.or.sigeb.SgrApiApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
