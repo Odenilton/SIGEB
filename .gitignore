@@ -1,5 +1,8 @@
+*.MF
+/META-INF/
 HELP.md
 target/
+*.properties
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
@@ -29,3 +32,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
