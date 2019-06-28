@@ -3,28 +3,24 @@ package br.com.or.sigeb.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.GenerationType;
+
+import br.com.or.sigeb.enums.Disciplina;
 
 @Entity
-@Table(name = "tb_aluno")
-public class Aluno implements Serializable {
+public class Professor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String nome;
-	private String cpf;
-	private String alergia;
-	private String deficiencia;
 
-	public Aluno() {
-	}
+	@Enumerated
+	private Disciplina disciplina;
 
 	public Long getId() {
 		return id;
@@ -42,28 +38,12 @@ public class Aluno implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public Disciplina getDisciplina() {
+		return disciplina;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getAlergia() {
-		return alergia;
-	}
-
-	public void setAlergia(String alergia) {
-		this.alergia = alergia;
-	}
-
-	public String getDeficiencia() {
-		return deficiencia;
-	}
-
-	public void setDeficiencia(String deficiencia) {
-		this.deficiencia = deficiencia;
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
 	}
 
 	@Override
@@ -82,7 +62,7 @@ public class Aluno implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Aluno other = (Aluno) obj;
+		Professor other = (Professor) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

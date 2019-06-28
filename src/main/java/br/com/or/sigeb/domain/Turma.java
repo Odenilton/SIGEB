@@ -1,16 +1,17 @@
 package br.com.or.sigeb.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
-@Entity
-@Table(name = "tb_aluno")
-public class Aluno implements Serializable {
+public class Turma implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,13 +19,10 @@ public class Aluno implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String nome;
-	private String cpf;
-	private String alergia;
-	private String deficiencia;
-
-	public Aluno() {
-	}
+	// UNIDIRECIONAL TURMA-ALUNO
+	@OneToMany
+	@JoinTable(name = "TURMA_HAS_ALUNO", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "aluno_id"))
+	private List<Aluno> alunos = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -34,36 +32,12 @@ public class Aluno implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public List<Aluno> getAlunos() {
+		return alunos;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getAlergia() {
-		return alergia;
-	}
-
-	public void setAlergia(String alergia) {
-		this.alergia = alergia;
-	}
-
-	public String getDeficiencia() {
-		return deficiencia;
-	}
-
-	public void setDeficiencia(String deficiencia) {
-		this.deficiencia = deficiencia;
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	@Override
@@ -82,7 +56,7 @@ public class Aluno implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Aluno other = (Aluno) obj;
+		Turma other = (Turma) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

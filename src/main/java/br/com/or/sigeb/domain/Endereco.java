@@ -6,11 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_aluno")
-public class Aluno implements Serializable {
+public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,12 +16,12 @@ public class Aluno implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String nome;
-	private String cpf;
-	private String alergia;
-	private String deficiencia;
+	private String rua;
+	private String logradouro;
+	private String bairro;
+	private String complemento;
 
-	public Aluno() {
+	public Endereco() {
 	}
 
 	public Long getId() {
@@ -34,36 +32,36 @@ public class Aluno implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getRua() {
+		return rua;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
-	public String getAlergia() {
-		return alergia;
+	public String getBairro() {
+		return bairro;
 	}
 
-	public void setAlergia(String alergia) {
-		this.alergia = alergia;
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
-	public String getDeficiencia() {
-		return deficiencia;
+	public String getComplemento() {
+		return complemento;
 	}
 
-	public void setDeficiencia(String deficiencia) {
-		this.deficiencia = deficiencia;
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 
 	@Override
@@ -82,7 +80,7 @@ public class Aluno implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Aluno other = (Aluno) obj;
+		Endereco other = (Endereco) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
