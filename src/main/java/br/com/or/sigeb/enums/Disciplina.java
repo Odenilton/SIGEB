@@ -1,7 +1,7 @@
 package br.com.or.sigeb.enums;
 
 public enum Disciplina {
-	PORTUGUES(0, "Portugues");
+	PORTUGUES(0, "Portugues"), MATEMATICA(1, "Matemática"), INGLES(2, "Inglês");
 
 	private int num;
 	private String nome;

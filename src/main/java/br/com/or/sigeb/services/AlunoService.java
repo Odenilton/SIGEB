@@ -18,7 +18,7 @@ public class AlunoService {
 	public Aluno findById(Long id) {
 		Optional<Aluno> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Object id: " + id + " not found. exception class: " + Aluno.class.toString()));
+				"Entity id: " + id + " not found. Exception class: " + Aluno.class.toString()));
 	}
 	
 	public Aluno save(Aluno aluno) {
