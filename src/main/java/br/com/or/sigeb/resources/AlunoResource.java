@@ -5,6 +5,7 @@ import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +28,7 @@ public class AlunoResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public ResponseEntity<Aluno> insert(@RequestBody Aluno aluno) {
 
 		Aluno obj = service.save(aluno);
