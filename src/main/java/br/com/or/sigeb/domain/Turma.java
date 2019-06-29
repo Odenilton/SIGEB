@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Turma implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,8 +24,12 @@ public class Turma implements Serializable {
 	// UNIDIRECIONAL TURMA-ALUNO
 	@OneToMany
 	@JoinTable(name = "TURMA_HAS_ALUNO", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "aluno_id"))
-	private List<Aluno> alunos = new ArrayList<>();
+	private List<Aluno> alunos;
 
+	@OneToMany
+	@JoinTable(name="TURMA_HAS_PROFESSOR", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name= "professor_id"))
+	private List<Professor> professores;
+	
 	public Long getId() {
 		return id;
 	}
