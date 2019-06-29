@@ -35,4 +35,11 @@ public class AlunoResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Aluno> removeById(Long id) {
+		Aluno obj = service.findById(id);
+		service.removeById(obj.getId());
+		return ResponseEntity.ok().build();
+	}
 }
