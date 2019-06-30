@@ -32,18 +32,14 @@ public class Turma implements Serializable {
 	@JoinTable(name = "TURMA_HAS_PROFESSOR", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "professor_id"))
 	private List<Funcionario> professores;
 
-	private Date dataInicio;
-	private Date dataFinal;
 	private Integer cargaHoraria;
 
 	public Turma() {
 	}
 
-	public Turma(Long id, Date dataInicio, Date dataFinal, Integer cargaHoraria) {
+	public Turma(Long id, Integer cargaHoraria) {
 		super();
 		this.id = id;
-		this.dataInicio = dataInicio;
-		this.dataFinal = dataFinal;
 		this.cargaHoraria = cargaHoraria;
 	}
 
@@ -69,22 +65,6 @@ public class Turma implements Serializable {
 
 	public void setProfessores(List<Funcionario> professores) {
 		this.professores = professores;
-	}
-
-	public Date getDataInicio() {
-		return dataInicio;
-	}
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public Date getDataFinal() {
-		return dataFinal;
-	}
-
-	public void setDataFinal(Date dataFinal) {
-		this.dataFinal = dataFinal;
 	}
 
 	public Integer getCargaHoraria() {

@@ -15,7 +15,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	public static final String[] PUBLIC_MATCHERS_GET = {"/aluno/**"};
+	public static final String[] PUBLIC_MATCHERS_GET = {"/aluno/**", "/turma/**" };
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
