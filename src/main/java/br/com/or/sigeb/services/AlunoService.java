@@ -1,5 +1,6 @@
 package br.com.or.sigeb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,11 @@ public class AlunoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Entity id: " + id + " not found. Exception class: " + Aluno.class.toString()));
 	}
-	
+
+	public List<Aluno> findAll() {
+		return repo.findAll();
+	}
+
 	public Aluno save(Aluno aluno) {
 		aluno.setId(null);
 		return repo.save(aluno);

@@ -1,9 +1,12 @@
 package br.com.or.sigeb.resources;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +31,13 @@ public class AlunoResource {
 		return ResponseEntity.ok().body(obj);
 	}
 
+	@GetMapping
+	public ResponseEntity<List<Aluno>> findAll() {
+		List<Aluno> obj = new ArrayList<>();
+		obj = service.findAll();
+		return ResponseEntity.ok().body(obj);
+	}
+
 	@PostMapping
 	public ResponseEntity<Aluno> insert(@RequestBody Aluno aluno) {
 
@@ -42,4 +52,5 @@ public class AlunoResource {
 		service.removeById(obj.getId());
 		return ResponseEntity.ok().build();
 	}
+
 }
