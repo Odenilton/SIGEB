@@ -2,12 +2,16 @@ package br.com.or.sigeb.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_usuario")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -17,6 +21,9 @@ public class Usuario implements Serializable {
 	private String username;
 
 	private String password;
+		
+	@OneToOne(cascade = CascadeType.ALL)
+	private Funcionario funcionario;
 
 	public Usuario() {
 	}

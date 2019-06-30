@@ -1,7 +1,7 @@
 package br.com.or.sigeb.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tb_turma")
 public class Turma implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,9 +29,24 @@ public class Turma implements Serializable {
 	private List<Aluno> alunos;
 
 	@OneToMany
-	@JoinTable(name="TURMA_HAS_PROFESSOR", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name= "professor_id"))
-	private List<Professor> professores;
-	
+	@JoinTable(name = "TURMA_HAS_PROFESSOR", joinColumns = @JoinColumn(name = "turma_id"), inverseJoinColumns = @JoinColumn(name = "professor_id"))
+	private List<Funcionario> professores;
+
+	private Date dataInicio;
+	private Date dataFinal;
+	private Integer cargaHoraria;
+
+	public Turma() {
+	}
+
+	public Turma(Long id, Date dataInicio, Date dataFinal, Integer cargaHoraria) {
+		super();
+		this.id = id;
+		this.dataInicio = dataInicio;
+		this.dataFinal = dataFinal;
+		this.cargaHoraria = cargaHoraria;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -44,6 +61,38 @@ public class Turma implements Serializable {
 
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
+	}
+
+	public List<Funcionario> getProfessores() {
+		return professores;
+	}
+
+	public void setProfessores(List<Funcionario> professores) {
+		this.professores = professores;
+	}
+
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Date getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(Date dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
+	public Integer getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	public void setCargaHoraria(Integer cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
 	}
 
 	@Override
