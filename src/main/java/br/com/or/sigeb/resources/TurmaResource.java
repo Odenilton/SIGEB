@@ -3,6 +3,9 @@ package br.com.or.sigeb.resources;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.or.sigeb.domain.Turma;
+import br.com.or.sigeb.domain.dto.TurmaDTO;
 import br.com.or.sigeb.services.TurmaService;
 
 @RestController
@@ -31,14 +35,16 @@ public class TurmaResource {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Turma>> findAll() {
+	public ResponseEntity<List<TurmaDTO>> findAll() {
 		List<Turma> obj = new ArrayList<>();
 		obj = service.findAll();
-		return ResponseEntity.ok().body(obj);
+		List<TurmaDTO> objDTO = obj.stream().map(x -> new TurmaDTO(x)).collect(Collectors.toList());
+
+		return ResponseEntity.ok().body(objDTO);
 	}
 
 	@PostMapping
-	public ResponseEntity<Turma> insert(@RequestBody Turma turma) {
+	public ResponseEntity<Turma> insert(@Valid @RequestBody Turma turma) {
 
 		Turma obj = service.save(turma);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
